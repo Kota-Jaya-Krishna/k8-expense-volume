@@ -93,6 +93,16 @@ spec:
       containers:
       - name: expense
         image: jayakrishna1993/frontend:1.0.0
+        resources:       #resouces limit
+        # soft limit
+          requests:
+            memory: "68Mi"
+            cpu: "100m"
+          # hard limit
+          limits:
+            memory: "128Mi"
+            cpu: "150m"
+
         volumeMounts:
               - name: nginx
                 mountPath: /etc/nginx/nginx.conf
@@ -105,6 +115,7 @@ spec:
           items:
             - key: nginx.conf
               path: nginx.conf
+
 
 ---
 
